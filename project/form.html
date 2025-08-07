@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        h1{
+        text-align: center;
+        }
+        div{
+            text-align: center;
+        }
+        .div1{
+            margin: 10px;
+            border: 5px solid;
+            padding: 20px;
+        }
+        button{
+            margin-top: 20px;
+            background-color: white;
+            padding-left: 5px;
+            padding-right: 5px;
+            border: 2px solid;
+        }
+        button:hover{
+            background-color: lightgreen;
+            box-shadow: 2px 2px 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="div1">
+        <h1>Form</h1>
+        <div>
+            <div>
+                <h4>Name</h4>
+                <input type="text" placeholder="Enter name" id="Name">
+            </div>
+            <div>
+                <h4>Email</h4>
+                <input type="email" placeholder="Enter email" id="Email">
+            </div>
+            <div>
+                <h4>Contect</h4>
+                <input type="number" placeholder="Enter phone number" id="number">
+            </div>
+            <button id="Submit" onclick="Submit()"> Submit</button>
+        </div>
+    </div>
+    <div>
+        <h4 id="result1"></h4>
+        <h4 id="result2"></h4>
+        <h4 id="result3"></h4>
+    </div>
+</body>
+</html>
+<script>
+let  Name;
+let  Email;
+let  number;
+ function Submit(){
+    Name=document.getElementById('Name').value;
+    Email=document.getElementById('Email').value;
+    number=document.getElementById('number').value;
+
+    document.getElementById('result1').innerHTML=Name
+    document.getElementById('result2').innerHTML=Email
+    document.getElementById('result3').innerHTML=number
+
+}
+
+</script>

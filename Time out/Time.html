@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div>
+        <input type="number" id="number" placeholder="Enter milliseconds">
+
+        <button type="button" onclick="cal()">Result</button>
+        <p id="Result"></p>
+    </div>
+    <script>
+        function cal() {
+            let milliseconds = document.getElementById("number").value
+            let seconds = Math.floor((milliseconds % (1000 * 60)) / 1000);
+            let minutes = Math.floor(milliseconds / (1000 * 60) % 60);
+            let hours = Math.floor(milliseconds/(1000*60*60))
+            document.getElementById("Result").innerHTML = `${hours}hours ${minutes} minutes ${seconds} seconds `
+
+        }
+    </script>
+</body>
+
+</html>

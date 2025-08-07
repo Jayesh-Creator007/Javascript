@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr" crossorigin="anonymous">
+  <style>
+    body {
+      background-color: #f0f2f5;
+      padding: 30px;
+    }
+    table {
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1 class="text-center mb-4">COVID-19 Stats</h1>
+
+    <!-- Dropdown to sort -->
+    <div class="mb-3">
+      <label for="sortOptions" class="form-label fw-bold">Sort by:</label>
+      <select id="sortOptions" class="form-select w-50">
+        <option disabled selected>______Short By______</option>
+        <option value="az">State Name A-Z</option>
+        <option value="za">State Name Z-A</option>
+        <option value="highest">Total Cases - Highest</option>
+        <option value="lowest">Total Cases - Lowest</option>
+      </select>
+    </div>
+
+    <div class="table-responsive container">
+      <table class="table table-success table-hover table-striped text-center">
+        <thead class="table-dark">
+          <tr>
+            <th>State</th>
+            <th>Total Cases</th>
+            <th>Deaths</th>
+            <th>Alive (Active)</th>
+          </tr>
+        </thead>
+        <tbody id="coronaAPI"></tbody>
+      </table>
+    </div>
+  </div>
+
+  <script>
+    let stateData = [];
+
+    // Fetch data
+    fetch('https://api.rootnet.in/covid19-in/stats/latest')
+      .then(function(res) {
+        return res.json();
+      })
+      .then(function(data) {
+        stateData = data.data.regional;
+        renderTable(stateData);
+      })
+      .catch(function(error) {
+        console.error('Error:', error);
+        document.getElementById('coronaAPI').innerHTML =
+          `<tr><td colspan="4" class="text-danger">Failed to load data</td></tr>`;
+      });
+
+    // Render table
+    function renderTable(data) {
+      let coronaAPI = document.getElementById('coronaAPI');
+      coronaAPI.innerHTML = '';
+
+      for (let i = 0; i < data.length; i++) {
+        let state = data[i];
+        let total = state.totalConfirmed;
+        let deaths = state.deaths;
+        let discharged = state.discharged;
+        let active = total - deaths - discharged;
+
+        let row = `
+          <tr>
+            <td>${state.loc}</td>
+            <td>${total}</td>
+            <td>${deaths}</td>
+            <td>${active}</td>
+          </tr>
+        `;
+        coronaAPI.innerHTML += row;
+      }
+    }
+
+    // Sort on dropdown change
+    document.getElementById('sortOptions').addEventListener('change', function() {
+      let value = this.value;
+      let sortedData = stateData.slice(); // create copy
+
+      if (value === 'az') {
+        sortedData.sort(function(a, b) {
+          return a.loc.localeCompare(b.loc);
+        });
+      } else if (value === 'za') {
+        sortedData.sort(function(a, b) {
+          return b.loc.localeCompare(a.loc);
+        });
+      } else if (value === 'highest') {
+        sortedData.sort(function(a, b) {
+          return b.totalConfirmed - a.totalConfirmed;
+        });
+      } else if (value === 'lowest') {
+        sortedData.sort(function(a, b) {
+          return a.totalConfirmed - b.totalConfirmed;
+        });
+      }
+
+      renderTable(sortedData);
+    });
+  </script>
+</body>
+</html>

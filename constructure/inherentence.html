@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=, initial-scale=1.0">
+    <title>Document</title>
+
+</head>
+<body>
+    <script>
+        // class parent {
+        //     constructor(){
+        //         console.log("Hello");   
+        //     }
+        // }
+        // class child extends parent{
+        //       constructor(){
+        //           super()
+        //           console.log("World");
+        //     }
+        // }
+        // new child
+        // class parent {
+        //     show(){
+        //         console.log("Hello");   
+        //     }
+        // }
+        // class child extends parent{
+        //       show2(){
+        //           console.log("World");
+        //     }
+        // }
+        // let h=new child
+        // h.show()
+        // h.show2()
+           class parent {
+            show(){
+                console.log("Hello");   
+            }
+        }
+        class child extends parent{
+              show(){
+                    super.show()
+                  console.log("World");
+            }
+        }
+        let h=new child
+        h.show()
+    </script>
+</body>
+</html>

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <style>
+        #submit {
+            transition: background-color 0.25s ease;
+        }
+
+        input {
+            transition: background-color 0.25s ease;
+        }
+
+        input:focus {
+            background-color: lightgrey;
+            outline: none;
+        }
+    </style>
+</head>
+
+<body>
+    <form action="" class="col-lg-6 mx-auto my-5 p-5 shadow" id="data">
+        <input type="text" id="name" class="mt-4" placeholder="Enter your name"><br>
+        <input type="text" id="Email" class="mt-4" placeholder="Enter your Email"><br>
+        <input type="password" id="password" class="mt-4" placeholder="Enter your password"><br>
+        <button id="submit" type="button" class="btn btn-outline-success mt-4">Submit</button>
+        <div id="result">
+
+        </div>
+    </form>
+
+</body>
+
+</html>
+<script>
+
+    let data = document.querySelector("#submit")
+
+    data.addEventListener('click', () => {
+        let name = document.querySelector("#name").value
+        let Email = document.querySelector("#Email").value
+        let password = document.querySelector("#password").value
+
+        if (!name) {
+            alert("Enter name")
+        } else if (!Email) {
+            alert("Enter Email")
+        } else if (!password) {
+            alert("Enter Password")
+        } else {
+            document.getElementById('result').innerHTML = `Name = ${name}<br>Email = ${Email}<br>Password = ${password}`
+        }
+        // console.log(name.value);
+        // console.log(Email.value);
+        // console.log(password.value);
+    })
+
+
+
+</script>

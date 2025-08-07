@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+</head>
+
+<body>
+    <button type="button" onclick="get()">Add</button>
+    <button type="button" onclick="show()">Add</button>
+    <script>
+        function get() {
+            localStorage.setItem('username', "test333")
+            localStorage.setItem('number', 10090)
+            localStorage.setItem('boolean',true)
+            localStorage.setItem('array',[5,6,7])
+            localStorage.setItem('object',{id:525,name:"J"})
+            let obj={id:54,name:"Jayesh"}
+            localStorage.setItem('obj',JSON.stringify(obj))
+        }
+       
+        
+        function show(){
+            let obj2=JSON.parse(localStorage.getItem('obj'))
+            console.log(obj2);
+            
+        }
+        
+    </script>
+</body>
+
+</html>

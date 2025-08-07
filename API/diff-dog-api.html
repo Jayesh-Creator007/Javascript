@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <input type="number" placeholder="enter number" id="number">
+
+    <button onclick="cal()">submit</button>
+
+    <div id="showApi"></div>
+
+    <script>
+        function cal(){
+          const number = document.querySelector('#number').value
+            console.log(number);
+            const link ='https://dog.ceo/api/breeds/image/random/'+ number;
+            fetch(link)
+            .then(res => res.json())
+            .then(data => {
+
+                const images = data.message
+                let output = ""
+                images.forEach((image) => {
+                output += `
+                <img src=${image} width="200" height="200"/>
+                 `
+                })
+                document.querySelector('#showApi').innerHTML = output
+            })
+            
+        }
+        // fetch('https://dog.ceo/api/breeds/image/random/3')
+        //     .then(res => res.json())
+        //     .then(data => {
+
+        //         const images = data.message
+        //         let output = ""
+        //         images.forEach((image) => {
+        //         output += `
+        //         <img src=${image} width="200" height="200"/>
+        //          `
+        //         })
+                // document.querySelector('#showApi').innerHTML = output
+            // })
+
+    </script>
+</body>
+
+</html>

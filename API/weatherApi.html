@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    body {
+      background: linear-gradient(to right, #667eea, #764ba2);
+      color: white;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Segoe UI', sans-serif;
+    }
+
+    .weather-container {
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 20px;
+      padding: 40px;
+      max-width: 500px;
+      width: 100%;
+      backdrop-filter: blur(10px);
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+    }
+
+    .weather-container input {
+      border-radius: 10px;
+      font-size: 1.2rem;
+    }
+
+    .weather-container button {
+      border-radius: 10px;
+      font-size: 1.1rem;
+    }
+
+    .card-result {
+      background: rgba(255, 255, 255, 0.15);
+      border: none;
+      border-radius: 20px;
+      margin-top: 30px;
+      padding: 25px;
+      color: white;
+    }
+
+    .card-result h3 {
+      margin-bottom: 5px;
+    }
+
+    .card-result p {
+      margin-bottom: 8px;
+    }
+
+    .weather-emoji {
+      font-size: 2.2rem;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="weather-container text-center">
+    <h2 class="fw-bold mb-4"> Real-Time Weather</h2>
+    <div class="input-group mb-3 shadow">
+      <input type="text" id="cityInput" class="form-control" placeholder="Enter city (e.g. London)">
+      <button class="btn btn-light" id="searchBtn">Search</button>
+    </div>
+
+    <div id="showweather"></div>
+  </div>
+
+  <script src="weather.js"></script>
+</body>
+
+</html>

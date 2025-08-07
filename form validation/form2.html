@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Form with Table</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr" crossorigin="anonymous">
+  <style>
+    body {
+      background-color: whitesmoke;
+    }
+
+    p {
+      color: red;
+    }
+
+    button {
+      background-color: greenyellow;
+      border: 4px lightgreen solid;
+      border-radius: 10px;
+      transition: 2s all;
+      box-shadow: 2px 2px 4px;
+    }
+
+    button:hover {
+      background-color: aquamarine;
+      border-radius: 50px;
+      border: 5px lightblue solid;
+      box-shadow: 4px 4px 5px;
+    }
+  </style>
+</head>
+
+<body>
+  <form method="post" action="" class="col-lg-6 mx-auto my-5 p-5 shadow" id="form">
+    <div class="mt-4">
+      <input type="text" placeholder="Enter name" name="name" id="name" class="form-control" />
+      <p id="name_error"></p>
+    </div>
+    <div class="mt-4">
+      <input type="text" placeholder="Enter email" id="email" class="form-control" />
+      <p id="email_error"></p>
+    </div>
+    <div class="mt-4">
+      <input type="number" placeholder="Enter mobile" id="mobile" class="form-control" />
+      <p id="mobile_error"></p>
+    </div>
+    <div class="mt-4">
+      <select id="city" class="form-select">
+        <option value="" disabled selected>City</option>
+        <option value="Ahmedabad">Ahmedabad</option>
+        <option value="Surat">Surat</option>
+        <option value="Vadodara">Vadodara</option>
+      </select>
+      <p id="city_error"></p>
+    </div>
+    <div class="mt-4">
+      <input type="radio" name="gender" id="male" value="male">
+      <label for="male">Male</label>
+      <input type="radio" name="gender" id="female" value="female">
+      <label for="female">Female</label>
+      <input type="radio" name="gender" id="other" value="other">
+      <label for="other">Other</label>
+      <p id="gender_error"></p>
+    </div>
+    <div class="mt-4">
+      <input type="checkbox" name="hobbies" id="play" value="play">
+      <label for="play">Play</label>
+      <input type="checkbox" name="hobbies" id="dance" value="dance">
+      <label for="dance">Dance</label>
+      <input type="checkbox" name="hobbies" id="other_hobby" value="other">
+      <label for="other_hobby">Other</label>
+      <p id="hobbies_error"></p>
+    </div>
+    <div class="mt-4">
+      <textarea id="address" class="form-control" placeholder="Enter address"></textarea>
+      <p id="address_error"></p>
+    </div>
+    <div class="mt-4">
+      <button type="submit">Submit</button>
+    </div>
+  </form>
+
+  <div class="table-responsive container">
+    <table class="table table-success table-hover table-striped" id="userTable">
+      <thead>
+        <tr>
+          <th>Id</th>
+          <th>Name</th>
+          <th>Email</th>
+          <th>Mobile</th>
+          <th>City</th>
+          <th>Gender</th>
+          <th>Hobbies</th>
+          <th>Address</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody></tbody>
+    </table>
+  </div>
+
+  <script>
+    const signup = document.querySelector('#form');
+    const tableBody = document.querySelector('#userTable tbody');
+    let editIndex = null;
+
+    function renderTable() {
+      tableBody.innerHTML = '';
+      const saved = JSON.parse(localStorage.getItem('userList')) || [];
+
+      saved.forEach((user, index) => {
+        const row = document.createElement('tr');
+        row.innerHTML = `
+          <td>${index + 1}</td>
+          <td>${user.name}</td>
+          <td>${user.email}</td>
+          <td>${user.mobile}</td>
+          <td>${user.city}</td>
+          <td>${user.gender}</td>
+          <td>${user.hobbies.join(', ')}</td>
+          <td>${user.address}</td>
+          <td>
+            <button class="btn btn-sm btn-warning me-2" onclick="editUser(${index})">Update</button>
+            <button class="btn btn-sm btn-danger" onclick="deleteUser(${index})">Delete</button>
+          </td>
+        `;
+        tableBody.appendChild(row);
+      });
+    }
+
+    function deleteUser(index) {
+      const userList = JSON.parse(localStorage.getItem('userList')) || [];
+      userList.splice(index, 1);
+      localStorage.setItem('userList', JSON.stringify(userList));
+      renderTable();
+    }
+
+    function editUser(index) {
+      const userList = JSON.parse(localStorage.getItem('userList')) || [];
+      const user = userList[index];
+      editIndex = index;
+
+      document.querySelector('#name').value = user.name;
+      document.querySelector('#email').value = user.email;
+      document.querySelector('#mobile').value = user.mobile;
+      document.querySelector('#city').value = user.city;
+      document.querySelector(`#${user.gender}`).checked = true;
+
+      document.querySelectorAll('input[name="hobbies"]').forEach(input => {
+        input.checked = user.hobbies.includes(input.value);
+      });
+
+      document.querySelector('#address').value = user.address;
+    }
+
+    signup.addEventListener('submit', (e) => {
+      e.preventDefault();
+
+      const name = document.querySelector('#name').value.trim();
+      const email = document.querySelector('#email').value.trim();
+      const mobile = document.querySelector('#mobile').value.trim();
+      const city = document.querySelector('#city').value;
+      const address = document.querySelector('#address').value.trim();
+      const gender = document.querySelector('input[name="gender"]:checked');
+      const hobbies = document.querySelectorAll('input[name="hobbies"]:checked');
+
+      let hobbiesArr = [];
+      hobbies.forEach(hobby => hobbiesArr.push(hobby.value));
+
+      const name_error = document.querySelector('#name_error');
+      const email_error = document.querySelector('#email_error');
+      const mobile_error = document.querySelector('#mobile_error');
+      const city_error = document.querySelector('#city_error');
+      const gender_error = document.querySelector('#gender_error');
+      const hobbies_error = document.querySelector('#hobbies_error');
+      const address_error = document.querySelector('#address_error');
+
+      let valid = true;
+
+      name_error.textContent = !name ? "Please enter your name" : "";
+      email_error.textContent = !email ? "Please enter your email" : "";
+      mobile_error.textContent = !mobile ? "Please enter your mobile number" : "";
+      city_error.textContent = !city ? "Please select your city" : "";
+      gender_error.textContent = !gender ? "Please select your gender" : "";
+      hobbies_error.textContent = hobbiesArr.length === 0 ? "Please select at least one hobby" : "";
+      address_error.textContent = !address ? "Please enter your address" : "";
+
+      valid = name && email && mobile && city && gender && hobbiesArr.length > 0 && address;
+
+      if (valid) {
+        const user = {
+          name,
+          email,
+          mobile,
+          city,
+          gender: gender.value,
+          hobbies: hobbiesArr,
+          address
+        };
+
+        let userList = JSON.parse(localStorage.getItem('userList')) || [];
+
+        if (editIndex !== null) {
+          userList[editIndex] = user;
+          editIndex = null;
+        } else {
+          userList.push(user);
+        }
+
+        localStorage.setItem('userList', JSON.stringify(userList));
+        signup.reset();
+        renderTable();
+      }
+    });
+
+    window.addEventListener('DOMContentLoaded', renderTable);
+  </script>
+</body>
+</html>

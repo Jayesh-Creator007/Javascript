@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <title>Document</title>
+    <style>
+        body{
+            background-color: whitesmoke;
+        }
+        p{
+            color: red;
+        }
+        button{
+            background-color: greenyellow;
+            border: 4px lightgreen solid;
+            border-radius: 10px;
+            transition: 2s all ;
+            box-shadow: 2px 2px 4px;
+        }
+        button:hover{
+            background-color: aquamarine;
+            border-radius: 50px;
+            border: 5px lightblue solid;
+            box-shadow: 4px 4px 5px;
+        }
+    </style>
+
+</head>
+<body>
+    <form method="post"  action="" class="col-lg-6 mx-auto my-5 p-5 shadow" id="form">
+    <div class="mt-4">
+        <input type="text" placeholder="enter name" name="name" id="name" class="form-control"/>
+        <p id="name_error"></p>
+    </div>
+    <div class="mt-4">
+        <input type="password" placeholder="enter password" id="password" class="form-control"/>
+        <p id="password_error"></p>
+    </div>
+     <div class="mt-4">
+        <input type="text" placeholder="enter email" id="email" class="form-control"/>
+        <p id="email_error"></p>
+    </div>
+     <div class="mt-4">
+        <input type="number" placeholder="enter mobile" id="mobile" class="form-control"/>
+        <p id="mobile_error"></p>
+    </div>
+    <div class="mt-4">
+        <select id="city" class="form-select">
+            <option value="" disabled selected>city</option>
+            <option value="ahm">Ahmedabad</option>
+            <option value="surat">Surat</option>
+            <option value="mumbai">Vadoda</option>
+        </select>
+        <p id="city_error"></p>
+    </div>
+    <div class="mt-4">
+        <input type="radio" name="gender" id="male" value="male">
+        <label for="male">Male</label>
+        <input type="radio" name="gender" id="female" value="female">
+        <label for="male">female</label>
+        <input type="radio" name="gender" id="other" value="other">
+        <label for="male">other</label>
+        <p id="gender_error"></p>
+    </div>
+   <div class="mt-4">
+        <input type="checkbox" name="hobbies" id="hobbies" value="play">
+        <label for="play">play</label>
+        <input type="checkbox" name="hobbies" id="hobbies" value="dance">
+        <label for="dance">dance</label>
+        <input type="checkbox" name="hobbies" id="hobbies" value="other">
+        <label for="other">other</label>
+        <p id="hobbies_error"></p>
+   </div>
+   <div class="mt-4">
+      <textarea id="address" class="form-control" placeholder="enter address"></textarea>
+    <p id="address_error"></p>
+   </div>
+   
+   <div class="mt-4">
+        <button type="submit">Submit</button>
+   </div>
+   </form>
+   <script src="index.js"></script>
+</body>
+</html>

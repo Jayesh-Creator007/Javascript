@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        function cal(...data) {
+            let sum = 0;
+            for (let i = 0; i < data.length; i++) {
+                sum += data[i]
+            }
+            console.log(sum)
+        }
+
+        let arr = [1, 2, 3, 4, 5]
+        cal(...arr) // fn calling
+    </script>
+
+</head>
+
+<body>
+    <button type="button" onclick="cal()">add</button>
+</body>
+
+</html>

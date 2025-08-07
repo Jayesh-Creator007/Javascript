@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+    <style>
+        body {
+            background-color: wheat;
+            text-align: center;
+        }
+        p{
+            color: red;
+        }
+        form {
+            background-color: white;
+        }
+
+        button {
+            margin-top: 20px;
+            background-color: wheat;
+            font-size: 25px;
+        }
+
+        button:hover {
+            background-color: lightgreen;
+            box-shadow: 2px 2px 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <form class="col-lg-6 mx-auto my-5 shadow">
+        <div>
+            <div>
+                <h3>Name </h3>
+                <input type="text" id="Name" placeholder="Name">
+                <p id="name_error"></p>
+            </div>
+            <div>
+                <h3>number </h3>
+                <input type="number" id="number" placeholder="Number">
+                <p id="number_error"></p>
+            </div>
+            <div>
+                <h3>Email</h3>
+                <input type="email" id="Email" placeholder="Email">
+                <p id="email_error"></p>
+            </div>
+
+            <div>
+                <h3>Password</h3>
+                <input type="password" id="Password" placeholder="Password">
+                <p id="password_error"></p>
+            </div>
+
+            <div>
+                <h3>City</h3>
+                <select id="city">
+                    <option value="city" disabled selected>city</option>
+                    <option value="Ahmedabad">Ahmedabad</option>
+                    <option value="Surat">Surat</option>
+                    <option value="Gandhinagar">Gandhinagar</option>
+                    <option value="Vadodara">Vadodara</option>
+                    <option value="Rajkot">Rajkot</option>
+                </select>
+                <p id="city_error"></p>
+            </div>
+
+            <div>
+                <h3>Gender</h3>
+                <input type="radio" name="gender" id="Gender" value="Male">Male
+                <input type="radio" name="gender" id="Gender" value="Female">Female
+                <p id="gender_error"></p>
+            </div>
+
+            <div>
+                <h3>Hobby</h3>
+                <input type="checkbox" class="Hobby" value="A">A
+                <input type="checkbox" class="Hobby" value="B">B
+                <input type="checkbox" class="Hobby" value="C">C
+                <input type="checkbox" class="Hobby" value="D">D
+                <input type="checkbox" class="Hobby" value="E">E
+                <input type="checkbox" class="Hobby" value="F">F
+                <p id="hobby_error"></p>
+            </div>
+            <div>
+                <h3>Address</h3>
+                <textarea name="" id="Address"></textarea>
+                <p id="Address_error"></p>
+            </div>
+        </div>
+        <hr>
+        <button id="reset" type="button">Submit</button>
+        <hr>
+        <p id="submit"></p>
+    </form>
+</body>
+
+</html>
+<script src="from.js">
+
+</script>

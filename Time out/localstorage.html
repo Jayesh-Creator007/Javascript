@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <button onclick="cal(1)" type="button">save</button>
+    <button onclick="cal(2)" type="button">show</button>
+    <button onclick="cal(3)" type="button">remove</button>
+    <button onclick="cal(4)" type="button">clear</button>
+    <h3 id="showData"></h3>
+    <script>
+        function cal(select) {
+            switch (select) {
+                case 1:
+                    localStorage.setItem('username', "test333")
+                    localStorage.setItem('number', 10090)
+                    break;
+                case 2:
+                    let username = localStorage.getItem('username')
+                    document.querySelector('#showData').innerHTML = username
+                    break;
+                case 3:
+                    localStorage.removeItem('grid')
+                    break;
+                case 4:
+                    localStorage.clear()
+            }
+        }
+    </script>
+</body>
+
+</html>

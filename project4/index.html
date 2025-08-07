@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body,
+        html {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+            background-image: url('https://t3.ftcdn.net/jpg/09/15/55/04/360_F_915550435_tV1RnNg23ltLo5cEjMxLdVkWiaOePPJK.jpg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        div {
+            height: auto;
+            background: rgba(255, 255, 255, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            border-radius: 15px;
+            padding: 30px 50px;
+            backdrop-filter: blur(2px);
+            -webkit-backdrop-filter: blur(10px);
+            display: flex;
+            gap: 20px;
+        }
+
+        button {
+            background-color: aqua;
+            padding: 10px 20px;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+        <button type="button" onclick="cala()">Start</button>
+        <button type="button" onclick="cal()">Stop</button>
+    </div>
+    <div>
+        <p id="images"><img src="" alt=""></p>
+    </div>
+
+    <script>
+        let arr = ["https://static.vecteezy.com/system/resources/thumbnails/033/132/925/small/scary-evil-face-grimace-with-fear-teeth-generate-ai-photo.jpg", "https://media.istockphoto.com/id/153173459/photo/horror-face.jpg?s=612x612&w=0&k=20&c=2dxpVQXSHKIKX_PAtQLgnpfgE1P2cvnjWLzVHbDkuD0=", "https://m.media-amazon.com/images/I/71tiIERcB5S._UY350_.jpg"]
+        var Setiomeout;
+        function cala() {
+            let i = 0
+            Setiomeout = setInterval(() => {
+                if (i < arr.length) {
+                    document.querySelector("#images").innerHTML = `<img src="${arr[i]}" alt="image" width="200" height="200">`;
+                    i++;
+                }else{
+                    i=0
+                }
+            },1000)
+        }
+        function cal(){
+            clearInterval(Setiomeout)
+        }
+    </script>
+</body>
+
+</html>

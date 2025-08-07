@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // class student {
+        //     constructor(){
+        //         document.write("Hello world")
+        //     }
+        // }
+        // new student()
+        // class student {
+        //     constructor(name1, name2) {
+        //         console.log(`${name1} ${name2}`)
+        //     }
+        // }
+        // new student("J","A")
+         class student {
+            constructor(name1, name2) {
+                this.name = name1
+                this.name3 = name2
+            }
+            show(){
+                document.write(`${this.name},${this.name3}`)
+            }
+        }
+        let h=new student("J","A")
+        h.show()
+    </script>
+</body>
+
+</html>

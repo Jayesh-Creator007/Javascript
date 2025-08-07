@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+<script>
+
+    let arr=[11,50,1,25,51,100];
+
+    // for-of
+    for(ele of arr){
+        console.log(ele)
+    }
+    // for-in
+    for(let ele in arr){
+        console.log(arr[ele])
+    }
+    //foreach arro function
+    arr.forEach((ele)=>{
+        console.log(ele)
+    })
+    //foreach anonymous function
+    arr.forEach(function(ele){
+        console.log(ele)
+    })
+    // call back function
+    let show=(ele)=>{
+        console.log(ele)
+    }
+
+    arr.forEach(show)
+
+    // map function 
+    let arr1=[11,22,33]
+    let newarr=arr1.map((ele)=>{
+        return ele*ele
+    })
+
+    console.log(newarr)
+    console.log(arr1)
+
+    //filter data from for-in
+    
+    for(ele of arr){
+        if(ele>25){
+            console.log(ele)
+        }
+    }
+    //filter data from for
+
+    for(let i=0;i<arr.length; i++){
+        if(arr[i]>25){
+            console.log(arr[i])
+        }
+    }
+    
+
+    //filter data from map
+
+    let op=arr.map((ele)=>{
+        if(ele>25){
+           return ele
+        }
+    })
+    console.log(op)
+
+    // filter data from filter function
+
+    let arr2=arr.filter((ele)=>{
+        return ele>25
+    }) 
+    console.log(arr2)
+    
+</script>
+</body>
+</html>

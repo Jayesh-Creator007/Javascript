@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        class student {
+            constructor(name,grId,mobile,email){
+                // this.name = "J"
+                // this.grId=58
+                // this.mobile= 496541641635
+                // this.email="J40@gmail.com"
+                document.write(`name =${name},GrId=${grId},mobile=${mobile},email=${email}<br>`)
+                
+            }
+        }
+        class parent extends student{
+            constructor(name,mobile,email){
+                // this.name="A",
+                // this.mobile= 555555555,
+                // this.email="j3@gmail.com" 
+                super("J",5555,454646,"J40@gmail.com")
+                document.write(`Name=${name},Mobile=${mobile},Email=${email}`)
+            }
+        }
+        class Result extends parent{
+            constructor(){
+                super("A",555555555,"j3@gmail.com")
+            }
+
+        }
+        new Result()
+    </script>
+</body>
+</html>

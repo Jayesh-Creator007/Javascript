@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0px;
+            padding: 0px;
+        }
+
+        div {
+            background-color: black;
+            color: white;
+
+            text-align: center;
+            height: 100dvh;
+            justify-content: center;
+            display: flex;
+            align-items: center;
+            font-size: 50px;
+            font-family: 'Brush Script MT', cursive;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box">
+        <h1></h1>
+    </div>
+    <script>
+        setInterval(() => {
+            let date = new Date()
+            let date2 = new Date("2025-06-25T12:40:00")
+            let remaining = date2 - date
+            if(remaining>0){
+                var days = Math.floor((remaining / (1000 * 60 * 60 * 24)))
+            hours = Math.floor(remaining / (1000 * 60 * 60) % 24)
+            minutes = Math.floor(remaining / (1000 * 60) % 60);
+            seconds = Math.floor((remaining / 1000) % 60);
+
+            // let result = [days, hours, minutes, seconds].join(":");
+            let result=`${days}d:${hours}h:${minutes}m:${seconds}s`
+            document.querySelector(".box h1").innerHTML = result
+
+            }
+            else{
+                document.querySelector(".box h1").innerHTML = `<b>Expired</b>`
+            }
+        }, 1000)
+    </script>
+</body>
+
+</html>

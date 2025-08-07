@@ -1,0 +1,79 @@
+10-4-25
+
+1.
+
+var is like ppl
+
+it can use the same name many times
+
+it is like Indian ppl, no boundary can stop it like {}
+
+ a global variable can be created by var
+
+let and const are having very less security comepare to var
+
+2.
+
+let can be use again and again with the same name or variable but it have to be print in the line before the other time it is used 
+
+
+let num1=100
+
+console.log(num1)
+
+
+num2= 200
+
+to print 100 console should be used before 200 one
+
+it can be used in {} so the main num will get 100 only
+
+Eg.
+
+let num=1
+
+{
+let num=2
+
+}
+
+2 can be used in {} only 
+
+but 1 can be use in the {} if it is defined out of it
+
+
+
+3.
+
+
+both let and var have equal power no one will over write each other
+
+
+4.
+
+
+const is pog ppl
+
+
+never talk in two different sentence and never change the the words back 
+it can only talk in a singl sentence
+
+
+5.
+
+parceInt/parcefloat use to convert string in to integers
+
+
+6.
+
+
+typeof can be used to know what type of data is used or
+
+what type of  data is input 
+
+
+
+
+
+
+

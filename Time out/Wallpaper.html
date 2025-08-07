@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+
+        }
+
+        .container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-image: linear-gradient(rgba(185, 115, 115, 0.5), rgba(90, 90, 183, 0.5)), url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR9YYh5Fk1u9VsWWr1MhkyQeOzeNbtnnMO96g&s');
+            height: 100dvh;
+            background-size: cover;
+            width: 100%;
+            opacity: 0;
+            transition: all 2s linear;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Hello World</h1>
+    </div>
+    <script>
+        setTimeout(() => {
+            document.querySelector('.container').style.opacity = 1
+        },5000)
+    </script>
+</body>
+
+</html>
